@@ -10,8 +10,7 @@ import static CoffeeMachine.ActionList.SelectReceptureButtonAction2.selectRecept
 import static CoffeeMachine.ActionList.SelectReceptureButtonAction3.minusButtonAction;
 import static CoffeeMachine.ActionList.SelectReceptureButtonAction3.plusButtonAction;
 import static CoffeeMachine.Condition.MenuMachine.Menu.nextButtonAction1;
-import static Form.MainForm.buttonListDrink;
-import static Form.MainForm.buttonListSugar;
+import static Form.MainForm.*;
 
 public class BT3 extends BT{
     @Override
@@ -26,6 +25,8 @@ public class BT3 extends BT{
         buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction2);
 
         buttonListDrink.get(2).removeActionListener(selectReceptureButtonAction3);
+
+        buttonListProgram.get(1).addActionListener(nextButtonAction1);
 
         buttonListSugar.get(0).removeActionListener(minusButtonAction);
         buttonListSugar.get(1).removeActionListener(plusButtonAction);

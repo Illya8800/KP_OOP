@@ -4,7 +4,6 @@ import CoffeeMachine.Condition.MenuMachine.Menu;
 import Form.MainForm;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static CoffeeMachine.ActionList.NextButtonAction1.selectButtonAction2;
 import static CoffeeMachine.ActionList.NextButtonAction1.selectReceptureButtonAction2;
@@ -34,6 +33,7 @@ public class BT2 extends BT {
         buttonListDrink.get(1).removeActionListener(selectButtonAction2);
         buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction2);
         buttonListDrink.get(2).removeActionListener(selectReceptureButtonAction3);
+
 
         buttonListSugar.get(0).removeActionListener(minusButtonAction);
         buttonListSugar.get(1).removeActionListener(plusButtonAction);
