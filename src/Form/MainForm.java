@@ -21,7 +21,7 @@ public class MainForm {
 
 
     public void createFrom(){
-        final Dimension dimension = new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
         text = new JTextField("12345");
         text.setEditable(false);
@@ -33,8 +33,8 @@ public class MainForm {
         frame.setResizable(false);
 
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        frame.setMaximumSize(dimension);
-        frame.setMinimumSize(dimension);
+        frame.setMaximumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        frame.setMinimumSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 
         frame.setIconImage(new ImageIcon(Objects.requireNonNull(MainForm.class.getResource("icoMainWindow.png")).getPath()).getImage());
 
@@ -121,13 +121,16 @@ public class MainForm {
     private void setButtonStyle() {
         sugarButtonList.get(0).setBackground(Color.pink);
         sugarButtonList.get(1).setBackground(Color.green);
-        sugarButtonList.get(0).setFont(new Font("Calibri", Font.BOLD, 35));
-        sugarButtonList.get(1).setFont(new Font("Calibri", Font.BOLD, 35));
+        for (int i = 0; i < sugarButtonList.size(); i++) {
+            sugarButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 35));
+            sugarButtonList.get(i).setBorder(new RoundedBorder(15));
+        }
+
 
 
         for (int i = 0; i < drinkButtonList.size(); i++){
             drinkButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 25));
-            drinkButtonList.get(i).setBackground(new Color(255,136,0));
+            drinkButtonList.get(i).setBorder(new RoundedBorder(35));
         }
         drinkButtonList.get(0).setText("Эспрессо");
         drinkButtonList.get(1).setText("Доппио");
@@ -139,7 +142,8 @@ public class MainForm {
 
         for (int i = 0; i < programButtonList.size(); i++){
             programButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 15));
-            programButtonList.get(i).setBackground(Color.PINK);
+            programButtonList.get(i).setBackground(new Color(167, 176, 205));
+            programButtonList.get(i).setBorder(new RoundedBorder(10));
         }
 
 
