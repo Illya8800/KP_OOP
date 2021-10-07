@@ -7,6 +7,10 @@ public class Shnek implements GetIngridient {
     private int countIngridient = 7000;
     private byte idShnek;
 
+    public int getCountIngridient() {
+        return countIngridient;
+    }
+
     public Shnek(byte idShnek){
         if(idShnek > 0 && idShnek < 8){
             this.idShnek = idShnek;
@@ -21,12 +25,12 @@ public class Shnek implements GetIngridient {
             try {
                 Thread.sleep(workTime);
                 countIngridient -= (int)workTime / 100;
-                //System.out.println(countIngridient);
+                System.out.println("На шнеке #" + idShnek + " сталось " + countIngridient + " грамм");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         } else {
-            System.err.println("Неправильный рецепт на " + idShnek + "шнеке");
+            System.err.println("Неправильный рецепт на " + idShnek + " шнеке");
         }
     }
 }
