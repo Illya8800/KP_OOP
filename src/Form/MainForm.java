@@ -1,5 +1,7 @@
 package Form;
 
+import CoffeeMachine.Condition.BT1;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,7 +10,8 @@ import java.util.Objects;
 public class MainForm {
     private final int WINDOW_WIDTH = 715;
     private final int WINDOW_HEIGHT = 665;
-    private JTextField text;
+
+    public static JTextField text;
     private JFrame frame;
 
     private ButtonGroup sugarButtonGroup;
@@ -23,7 +26,7 @@ public class MainForm {
     public void createFrom(){
 
 
-        text = new JTextField("12345");
+        text = new JTextField("Приятного аппетита");
         text.setEditable(false);
         text.setFont(new Font("Times New Roman", Font.BOLD, 25));
         text.setHorizontalAlignment(JTextField.CENTER);
@@ -39,8 +42,10 @@ public class MainForm {
         frame.setIconImage(new ImageIcon(Objects.requireNonNull(MainForm.class.getResource("icoMainWindow.png")).getPath()).getImage());
 
         createPanels();
+
         setButtonStyle();
 
+        setOperations();
         frame.setVisible(true);
     }
 
@@ -149,7 +154,9 @@ public class MainForm {
 
     }
 
-
+    public void setOperations(){
+        programButtonList.get(0).addActionListener(new BT1());
+    }
 }
 
 
