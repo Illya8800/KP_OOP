@@ -1,6 +1,6 @@
 package CoffeeMachine.Condition;
 
-import CoffeeMachine.ElementsCoffeeMachine.Shnek;
+import CoffeeMachine.Drink.Decorator.Shnek;
 import CoffeeMachine.Interface.GetIngridient;
 import Form.MainForm;
 
@@ -17,13 +17,34 @@ public class BT1 extends BT implements GetIngridient {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++) {
+                    try {
+                        MainForm.text.setText("Промывка");
+                        Thread.sleep(500);
+                        MainForm.text.setText("Промывка.");
+                        Thread.sleep(500);
+                        MainForm.text.setText("Промывка..");
+                        Thread.sleep(500);
+                        MainForm.text.setText("Промывка...");
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    finally {
+                        MainForm.text.setText("Приятного аппетита");
+                    }
+                }
+            }
+        }).start();
 
-        MainForm.text.setText("Промывка...");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 rotate(500);
-                MainForm.text.setText("Приятного аппетита");
+
             }
         }).start();
     }

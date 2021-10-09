@@ -1,30 +1,25 @@
-package CoffeeMachine.ElementsCoffeeMachine;
+package CoffeeMachine.Drink.Decorator;
 
-import CoffeeMachine.Interface.GetIngridient;
+import CoffeeMachine.Drink.Beverage;
 
-public class Shnek implements GetIngridient {
+public abstract class Shnek extends Beverage {
 
     private int countIngridient = 7000;
-    private byte idShnek;
+    protected byte idShnek;
 
     public int getCountIngridient() {
         return countIngridient;
     }
 
-    public Shnek(byte idShnek){
-        if(idShnek > 0 && idShnek < 8){
-            this.idShnek = idShnek;
-        } else {
-            System.err.println("Неверный номер шнека. Допустимыйе номера: [1;7]");
-        }
-    }
+    protected abstract int coefficient();
+    protected abstract int minCountIngridient();
 
     @Override
     public void rotate (int workTime) {
-        if(workTime > 0 && workTime < 5000 && countIngridient > 500){
+        if(workTime > 0 && workTime < 5000 && countIngridient > minCountIngridient()){
             try {
                 Thread.sleep(workTime);
-                countIngridient -= (int)workTime / 100;
+                countIngridient -= (int)workTime / coefficient();
                 System.out.println("На шнеке #" + idShnek + " сталось " + countIngridient + " грамм");
             } catch (InterruptedException e) {
                 e.printStackTrace();

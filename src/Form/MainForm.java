@@ -1,6 +1,7 @@
 package Form;
 
 import CoffeeMachine.Condition.BT1;
+import CoffeeMachine.Drink.Espresso;
 
 import javax.swing.*;
 import java.awt.*;
@@ -154,8 +155,11 @@ public class MainForm {
 
     }
 
-    public void setOperations(){
+     synchronized public void setOperations(){
         programButtonList.get(0).addActionListener(new BT1());
+
+
+        drinkButtonList.get(0).addActionListener(new Espresso());
     }
 }
 
