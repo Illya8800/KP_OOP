@@ -19,4 +19,5 @@ public class Sugar extends Shnek {
     protected int minCountIngridient() {
         return coefficient() * 5;
     }
+
 }

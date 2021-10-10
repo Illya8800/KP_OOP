@@ -19,4 +19,5 @@ public class Milk extends Shnek {
     protected int minCountIngridient() {
         return coefficient() * 8;
     }
-}
+
+ }

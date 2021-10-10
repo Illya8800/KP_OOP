@@ -1,6 +1,8 @@
 package Form;
 
 import CoffeeMachine.Condition.BT1;
+import CoffeeMachine.Condition.BT2;
+import CoffeeMachine.Drink.Beverage;
 import CoffeeMachine.Drink.CoffeeBTnum.*;
 
 import javax.swing.*;
@@ -19,15 +21,26 @@ public class MainForm {
     private ButtonGroup programModButtonGroup;
     private ButtonGroup drinkButtonGroup;
 
-    public static ArrayList <JButton> sugarButtonList;// capacity = 2
-    public static ArrayList <JButton> programButtonList;// capacity = 3
-    public static ArrayList <JButton> drinkButtonList;// capacity = 7
+    public static ArrayList <JButton> buttonListSugar;// capacity = 2
+    public static ArrayList <JButton> buttonListProgram;// capacity = 3
+    public static ArrayList <JButton> buttonListDrink;// capacity = 7
+    public static ArrayList <Beverage> actionListDrink = new ArrayList<>();// capacity = 7
 
     public static JLabel imgLabel;
 
     public static void setMainIMG(String path){
         imgLabel.setIcon(new ImageIcon(path));
     }
+
+    public static EspressoBT espressoBT = new EspressoBT();
+    public static DoppioBT doppioBT = new DoppioBT();
+    public static AmericanoBT americanoBT = new AmericanoBT();
+    public static FlatWhiteBT flatWhiteBT = new FlatWhiteBT();
+    public static CappucinoBT cappucinoBT = new CappucinoBT();
+    public static LatteBT latteBT = new LatteBT();
+    public static MacchiatoBT macchiatoBT =  new MacchiatoBT();
+
+
 
     public void createFrom(){
         text = new JTextField("Приятного аппетита");
@@ -91,31 +104,31 @@ public class MainForm {
         programModButtonGroup = new ButtonGroup();
         drinkButtonGroup = new ButtonGroup();
 
-        sugarButtonList = new ArrayList<>(2);
-        programButtonList = new ArrayList<>(3);
-        drinkButtonList = new ArrayList<>(7);
+        buttonListSugar = new ArrayList<>(2);
+        buttonListProgram = new ArrayList<>(3);
+        buttonListDrink = new ArrayList<>(7);
 
-        sugarButtonList.add(new JButton("-"));
-        sugarButtonList.add(new JButton("+"));
+        buttonListSugar.add(new JButton("-"));
+        buttonListSugar.add(new JButton("+"));
 
         sugarTopPanel.setPreferredSize(new Dimension(WINDOW_WIDTH / 2 - 15, 0));
-        sugarButtonGroup.add(sugarButtonList.get(0));
-        sugarButtonGroup.add(sugarButtonList.get(1));
-        sugarTopPanel.add(sugarButtonList.get(0));
-        sugarTopPanel.add(sugarButtonList.get(1));
+        sugarButtonGroup.add(buttonListSugar.get(0));
+        sugarButtonGroup.add(buttonListSugar.get(1));
+        sugarTopPanel.add(buttonListSugar.get(0));
+        sugarTopPanel.add(buttonListSugar.get(1));
 
         for (int i = 0; i < 7; i++) {
-            drinkButtonList.add(new JButton("1"));
+            buttonListDrink.add(new JButton("1"));
             drinkBottomPanel.setPreferredSize(new Dimension(250, 450));
-            drinkButtonGroup.add(drinkButtonList.get(i));
-            drinkBottomPanel.add(drinkButtonList.get(i));
+            drinkButtonGroup.add(buttonListDrink.get(i));
+            drinkBottomPanel.add(buttonListDrink.get(i));
         }
 
         for (int i = 0; i < 3; i++) {
-            programButtonList.add(new JButton("BT"+(i+1)));
+            buttonListProgram.add(new JButton("BT"+(i+1)));
             programModTopPanel.setPreferredSize(new Dimension(WINDOW_WIDTH / 2, 50));
-            programModButtonGroup.add(programButtonList.get(i));
-            programModTopPanel.add(programButtonList.get(i));
+            programModButtonGroup.add(buttonListProgram.get(i));
+            programModTopPanel.add(buttonListProgram.get(i));
         }
 
         leftMainPanel.add(sugarTopPanel, BorderLayout.NORTH);
@@ -130,28 +143,28 @@ public class MainForm {
 
 
     private void setButtonStyle() {
-        sugarButtonList.get(0).setBackground(Color.pink);
-        sugarButtonList.get(1).setBackground(Color.green);
+        buttonListSugar.get(0).setBackground(Color.pink);
+        buttonListSugar.get(1).setBackground(Color.green);
 
-        for (JButton value : sugarButtonList) {
+        for (JButton value : buttonListSugar) {
             value.setFont(new Font("Calibri", Font.BOLD, 35));
             value.setBorder(new RoundedBorder(15));
         }
 
 
-        for (JButton button : drinkButtonList) {
+        for (JButton button : buttonListDrink) {
             button.setFont(new Font("Calibri", Font.BOLD, 25));
             button.setBorder(new RoundedBorder(35));
         }
-        drinkButtonList.get(0).setText("Эспрессо");
-        drinkButtonList.get(1).setText("Доппио");
-        drinkButtonList.get(2).setText("Американо");
-        drinkButtonList.get(3).setText("Флэт вайт");
-        drinkButtonList.get(4).setText("Капучино");
-        drinkButtonList.get(5).setText("Латте");
-        drinkButtonList.get(6).setText("Макиато");
+        buttonListDrink.get(0).setText("Эспрессо");
+        buttonListDrink.get(1).setText("Доппио");
+        buttonListDrink.get(2).setText("Американо");
+        buttonListDrink.get(3).setText("Флэт вайт");
+        buttonListDrink.get(4).setText("Капучино");
+        buttonListDrink.get(5).setText("Латте");
+        buttonListDrink.get(6).setText("Макиато");
 
-        for (JButton jButton : programButtonList) {
+        for (JButton jButton : buttonListProgram) {
             jButton.setFont(new Font("Calibri", Font.BOLD, 15));
             jButton.setBackground(new Color(167, 176, 205));
             jButton.setBorder(new RoundedBorder(10));
@@ -162,22 +175,30 @@ public class MainForm {
 
 
     public static void setButtonEnabled(boolean condition){
-        for (JButton jButton : programButtonList) jButton.setEnabled(condition);
-        for (JButton jButton : drinkButtonList) jButton.setEnabled(condition);
+        for (JButton jButton : buttonListProgram) jButton.setEnabled(condition);
+        for (JButton jButton : buttonListDrink) jButton.setEnabled(condition);
 
 
     }
 
     public void setOperations(){
-        programButtonList.get(0).addActionListener(new BT1());
+        buttonListProgram.get(0).addActionListener(new BT1());
+        buttonListProgram.get(1).addActionListener(new BT2());
 
-        drinkButtonList.get(0).addActionListener(new EspressoBT());
-        drinkButtonList.get(1).addActionListener(new DoppioBT());
-        drinkButtonList.get(2).addActionListener(new AmericanoBT());
-        drinkButtonList.get(3).addActionListener(new FlatWhiteBT());
-        drinkButtonList.get(4).addActionListener(new CappucinoBT());
-        drinkButtonList.get(5).addActionListener(new LatteBT());
-        drinkButtonList.get(6).addActionListener(new MacchiatoBT());
+        buttonListDrink.get(0).addActionListener(espressoBT);
+        actionListDrink.add(espressoBT);
+        buttonListDrink.get(1).addActionListener(doppioBT);
+        actionListDrink.add(doppioBT);
+        buttonListDrink.get(2).addActionListener(americanoBT);
+        actionListDrink.add(americanoBT);
+        buttonListDrink.get(3).addActionListener(flatWhiteBT);
+        actionListDrink.add(flatWhiteBT);
+        buttonListDrink.get(4).addActionListener(cappucinoBT);
+        actionListDrink.add(cappucinoBT);
+        buttonListDrink.get(5).addActionListener(latteBT);
+        actionListDrink.add(latteBT);
+        buttonListDrink.get(6).addActionListener(macchiatoBT);
+        actionListDrink.add(macchiatoBT);
 
     }
 }

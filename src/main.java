@@ -1,10 +1,11 @@
-import CoffeeMachine.CoffeeMachine;
+import CoffeeMachine.Drink.Beverage;
 import Form.MainForm;
 
 public class main {
     public static void main(String[] args) {
         MainForm mainForm = new MainForm();
         mainForm.createFrom();
+        Beverage.loadRecepture();
     }
 }
 

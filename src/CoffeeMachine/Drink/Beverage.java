@@ -3,8 +3,13 @@ package CoffeeMachine.Drink;
 import CoffeeMachine.CoffeeMachine;
 import CoffeeMachine.Drink.Decorator.Shnek;
 import CoffeeMachine.Interface.GetIngridient;
+import CoffeeMachine.Recepture.Recepture;
 import Form.MainForm;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public abstract class Beverage implements GetIngridient {
@@ -12,11 +17,28 @@ public abstract class Beverage implements GetIngridient {
     private CoffeeMachine cm = new CoffeeMachine();
     protected ArrayList<Shnek> shneks = cm.getShneks();
 
-    protected int shnekRotate1;
-    protected int shnekRotate2;
-    protected int shnekRotate3;
-    protected int shnekRotate4;
-    protected int shnekRotate5;
+    protected static ArrayList<Recepture> receptures = new ArrayList<>(7);
+
+    public static void loadRecepture(){
+        try {
+            FileInputStream fileStream = new FileInputStream("receptures.ser");
+            ObjectInputStream oi = new ObjectInputStream(fileStream);
+
+            for (int i = 0; i < 7; i++) {
+                Recepture recept = (Recepture) oi.readObject();
+                receptures.add(recept);
+                oi.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void cooking(){
         new Thread(new Runnable() {
@@ -61,12 +83,12 @@ public abstract class Beverage implements GetIngridient {
         }).start();
     }
 
-    protected void shnekRotate(int shnekRotate1, int shnekRotate2, int shnekRotate3, int shnekRotate4, int shnekRotate5){
-        shneks.get(0).rotate(shnekRotate1);
-        shneks.get(1).rotate(shnekRotate2);
-        shneks.get(2).rotate(shnekRotate3);
-        shneks.get(3).rotate(shnekRotate4);
-        shneks.get(4).rotate(shnekRotate5);
+    protected void shnekRotate(Recepture recepture){
+        shneks.get(0).rotate(recepture.getShnekRotate1());
+        shneks.get(1).rotate(recepture.getShnekRotate2());
+        shneks.get(2).rotate(recepture.getShnekRotate3());
+        shneks.get(3).rotate(recepture.getShnekRotate4());
+        shneks.get(4).rotate(recepture.getShnekRotate5());
     }
 
 }

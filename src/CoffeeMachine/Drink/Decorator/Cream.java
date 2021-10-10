@@ -1,9 +1,9 @@
 package CoffeeMachine.Drink.Decorator;
 
-public class Cream extends Shnek{
+public class Cream extends Shnek {
 
-    public Cream(byte idShnek){
-        if(idShnek > 0 && idShnek < 8){
+    public Cream(byte idShnek) {
+        if (idShnek > 0 && idShnek < 8) {
             this.idShnek = idShnek;
         } else {
             System.err.println("Неверный номер шнека. Допустимыйе номера: [1;7]");
@@ -19,4 +19,5 @@ public class Cream extends Shnek{
     protected int minCountIngridient() {
         return coefficient() * 7;
     }
+
 }

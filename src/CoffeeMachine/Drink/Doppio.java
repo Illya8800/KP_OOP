@@ -1,7 +1,8 @@
 package CoffeeMachine.Drink;
 
+import java.awt.event.ActionListener;
 
-public class Doppio extends Beverage {
+public abstract class Doppio extends Beverage implements ActionListener {
     @Override
     public void rotate(int workTime) {
         cooking();
