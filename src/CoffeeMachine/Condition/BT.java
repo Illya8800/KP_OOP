@@ -1,5 +1,6 @@
 package CoffeeMachine.Condition;
 
+import CoffeeMachine.ActionList.NullAction;
 import CoffeeMachine.CoffeeMachine;
 import CoffeeMachine.Drink.CoffeeBTnum.*;
 import CoffeeMachine.Drink.Decorator.Shnek;
@@ -7,6 +8,7 @@ import CoffeeMachine.Drink.Decorator.Shnek;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static Form.MainForm.actionListDrink;
 import static Form.MainForm.buttonListDrink;
 
 public abstract class BT implements ActionListener {
@@ -22,5 +24,10 @@ public abstract class BT implements ActionListener {
         buttonListDrink.get(5).addActionListener(new LatteBT());
         buttonListDrink.get(6).addActionListener(new MacchiatoBT());
     }
-
+    protected void setNullAction() {
+        for (int i = 0; i < buttonListDrink.size(); i++) {
+            buttonListDrink.get(i).removeActionListener((ActionListener) actionListDrink.get(i));
+            buttonListDrink.get(i).addActionListener(new NullAction());
+        }
+    }
 }
