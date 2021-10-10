@@ -20,7 +20,8 @@ public class BT1 extends BT implements GetIngridient {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 5; i++) {
+                MainForm.setButtonEnabled(false);
+                for (int i = 0; i < 3; i++) {
                     try {
                         MainForm.text.setText("Промывка");
                         Thread.sleep(500);
@@ -37,6 +38,7 @@ public class BT1 extends BT implements GetIngridient {
                         MainForm.text.setText("Приятного аппетита");
                     }
                 }
+            MainForm.setButtonEnabled(true);
             }
         }).start();
 

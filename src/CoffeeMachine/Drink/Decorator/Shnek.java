@@ -16,7 +16,7 @@ public abstract class Shnek extends Beverage {
 
     @Override
     public void rotate (int workTime) {
-        if(workTime > 0 && workTime < 5000 && countIngridient > minCountIngridient()){
+        if(workTime > -1 && workTime < 5000 && countIngridient > minCountIngridient()){
             try {
                 Thread.sleep(workTime);
                 countIngridient -= (int)workTime / coefficient();

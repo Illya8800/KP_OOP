@@ -1,6 +1,7 @@
 package CoffeeMachine.Drink.Decorator;
 
 public class Milk extends Shnek {
+
     public Milk(byte idShnek){
         if(idShnek > 0 && idShnek < 8){
             this.idShnek = idShnek;

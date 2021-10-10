@@ -1,7 +1,7 @@
 package Form;
 
 import CoffeeMachine.Condition.BT1;
-import CoffeeMachine.Drink.Espresso;
+import CoffeeMachine.Drink.CoffeeBTnum.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,14 +19,17 @@ public class MainForm {
     private ButtonGroup programModButtonGroup;
     private ButtonGroup drinkButtonGroup;
 
-    ArrayList <JButton> sugarButtonList;// capacity = 2
-    ArrayList <JButton> programButtonList;// capacity = 3
-    ArrayList <JButton> drinkButtonList;// capacity = 7
+    public static ArrayList <JButton> sugarButtonList;// capacity = 2
+    public static ArrayList <JButton> programButtonList;// capacity = 3
+    public static ArrayList <JButton> drinkButtonList;// capacity = 7
 
+    public static JLabel imgLabel;
+
+    public static void setMainIMG(String path){
+        imgLabel.setIcon(new ImageIcon(path));
+    }
 
     public void createFrom(){
-
-
         text = new JTextField("Приятного аппетита");
         text.setEditable(false);
         text.setFont(new Font("Times New Roman", Font.BOLD, 25));
@@ -79,7 +82,9 @@ public class MainForm {
 
         JPanel imgPanel = new JPanel();
         //imgPanel.setBackground(Color.BLUE);
-        JLabel imgLabel = new JLabel(new ImageIcon("C:\\Не винда\\Без имени-2.jpg"));
+        imgLabel = new JLabel(new ImageIcon("C:\\IntelIdeaProject\\KP_OOP\\IMG\\DefaultPNG.png"));
+        //setMainIMG("C:\\Не винда\\Без имени-2.jpg");
+
         imgLabel.setPreferredSize(new Dimension(WINDOW_WIDTH / 2, 500));
 
         sugarButtonGroup = new ButtonGroup();
@@ -127,39 +132,53 @@ public class MainForm {
     private void setButtonStyle() {
         sugarButtonList.get(0).setBackground(Color.pink);
         sugarButtonList.get(1).setBackground(Color.green);
-        for (int i = 0; i < sugarButtonList.size(); i++) {
-            sugarButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 35));
-            sugarButtonList.get(i).setBorder(new RoundedBorder(15));
+
+        for (JButton value : sugarButtonList) {
+            value.setFont(new Font("Calibri", Font.BOLD, 35));
+            value.setBorder(new RoundedBorder(15));
         }
 
 
-
-        for (int i = 0; i < drinkButtonList.size(); i++){
-            drinkButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 25));
-            drinkButtonList.get(i).setBorder(new RoundedBorder(35));
+        for (JButton button : drinkButtonList) {
+            button.setFont(new Font("Calibri", Font.BOLD, 25));
+            button.setBorder(new RoundedBorder(35));
         }
         drinkButtonList.get(0).setText("Эспрессо");
         drinkButtonList.get(1).setText("Доппио");
         drinkButtonList.get(2).setText("Американо");
-        drinkButtonList.get(3).setText("Американо с молоком");
+        drinkButtonList.get(3).setText("Флэт вайт");
         drinkButtonList.get(4).setText("Капучино");
         drinkButtonList.get(5).setText("Латте");
-        drinkButtonList.get(6).setText("Раф-кофе");
+        drinkButtonList.get(6).setText("Макиато");
 
-        for (int i = 0; i < programButtonList.size(); i++){
-            programButtonList.get(i).setFont(new Font("Calibri", Font.BOLD, 15));
-            programButtonList.get(i).setBackground(new Color(167, 176, 205));
-            programButtonList.get(i).setBorder(new RoundedBorder(10));
+        for (JButton jButton : programButtonList) {
+            jButton.setFont(new Font("Calibri", Font.BOLD, 15));
+            jButton.setBackground(new Color(167, 176, 205));
+            jButton.setBorder(new RoundedBorder(10));
         }
 
 
     }
 
-     synchronized public void setOperations(){
+
+    public static void setButtonEnabled(boolean condition){
+        for (JButton jButton : programButtonList) jButton.setEnabled(condition);
+        for (JButton jButton : drinkButtonList) jButton.setEnabled(condition);
+
+
+    }
+
+    public void setOperations(){
         programButtonList.get(0).addActionListener(new BT1());
 
+        drinkButtonList.get(0).addActionListener(new EspressoBT());
+        drinkButtonList.get(1).addActionListener(new DoppioBT());
+        drinkButtonList.get(2).addActionListener(new AmericanoBT());
+        drinkButtonList.get(3).addActionListener(new FlatWhiteBT());
+        drinkButtonList.get(4).addActionListener(new CappucinoBT());
+        drinkButtonList.get(5).addActionListener(new LatteBT());
+        drinkButtonList.get(6).addActionListener(new MacchiatoBT());
 
-        drinkButtonList.get(0).addActionListener(new Espresso());
     }
 }
 

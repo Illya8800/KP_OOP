@@ -1,17 +1,12 @@
 package CoffeeMachine.Drink;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Espresso extends Beverage implements ActionListener {
+public class Espresso extends Beverage {
     @Override
     public void rotate(int workTime) {
         cooking();
-        shneks.get(1).rotate(workTime);
+        shneks.get(0).rotate(1000);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        rotate(1000);
-    }
+
 }

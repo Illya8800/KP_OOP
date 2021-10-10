@@ -1,6 +1,7 @@
 package CoffeeMachine.Drink.Decorator;
 
 public class Chocolate extends Shnek {
+
     public Chocolate(byte idShnek){
         if(idShnek > 0 && idShnek < 8){
             this.idShnek = idShnek;
@@ -18,5 +19,6 @@ public class Chocolate extends Shnek {
     protected int minCountIngridient() {
         return coefficient() * 7;
     }
+
 
 }

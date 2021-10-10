@@ -1,9 +1,10 @@
 package CoffeeMachine.Drink;
 
+
 public class Doppio extends Beverage {
     @Override
     public void rotate(int workTime) {
-
-        shneks.get(1).rotate(2000);
+        cooking();
+        shneks.get(0).rotate(2000);
     }
 }
