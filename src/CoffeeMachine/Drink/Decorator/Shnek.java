@@ -14,6 +14,10 @@ public abstract class Shnek extends Beverage {
     protected abstract int coefficient();
     protected abstract int minCountIngridient();
 
+    public byte getIdShnek() {
+        return idShnek;
+    }
+
     @Override
     public void rotate (int workTime) {
         if(workTime > -1 && workTime < 5000 && countIngridient > minCountIngridient()){
