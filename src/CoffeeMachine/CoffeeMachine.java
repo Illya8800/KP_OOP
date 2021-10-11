@@ -28,9 +28,4 @@ public class CoffeeMachine {
         return shneks;
     }
 
-
-    public void startCoffeMachine(){
-        condition.add(drink);
-    }
-
 }

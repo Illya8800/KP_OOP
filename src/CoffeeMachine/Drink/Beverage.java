@@ -17,12 +17,14 @@ public abstract class Beverage implements GetIngridient {
     private CoffeeMachine cm = new CoffeeMachine();
     protected ArrayList<Shnek> shneks = cm.getShneks();
 
-    protected static ArrayList<Recepture> receptures = new ArrayList<>(7);
+    public static ArrayList<Recepture> receptures = new ArrayList<>(7);
 
     public static void loadRecepture(){
         try {
             FileInputStream fileStream = new FileInputStream("receptures.ser");
             ObjectInputStream oi = new ObjectInputStream(fileStream);
+
+            receptures.clear();
 
             for (int i = 0; i < 7; i++) {
                 Recepture recept = (Recepture) oi.readObject();

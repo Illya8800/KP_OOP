@@ -2,6 +2,7 @@ package Form;
 
 import CoffeeMachine.Condition.BT1;
 import CoffeeMachine.Condition.BT2;
+import CoffeeMachine.Condition.BT3;
 import CoffeeMachine.Drink.Beverage;
 import CoffeeMachine.Drink.CoffeeBTnum.*;
 
@@ -184,6 +185,7 @@ public class MainForm {
     public void setOperations(){
         buttonListProgram.get(0).addActionListener(new BT1());
         buttonListProgram.get(1).addActionListener(new BT2());
+        buttonListProgram.get(2).addActionListener(new BT3());
 
         buttonListDrink.get(0).addActionListener(espressoBT);
         actionListDrink.add(espressoBT);
