@@ -1,6 +1,7 @@
 package CoffeeMachine.Recepture;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Recepture implements Serializable {
 
@@ -9,6 +10,48 @@ public class Recepture implements Serializable {
     private int shnekRotate3;
     private int shnekRotate4;
     private int shnekRotate5;
+
+    public int getShnekRotate(byte num) {
+        switch (num){
+            case 0 ->{
+                return shnekRotate1;
+            }
+            case 1 ->{
+                return shnekRotate2;
+            }
+            case 2 ->{
+                return shnekRotate3;
+            }
+            case 3 ->{
+                return shnekRotate4;
+            }
+            case 4 ->{
+                return shnekRotate5;
+            }
+        }
+        return -1;
+    }
+
+
+    public void setShnekRotate(byte num, int shnekRotate) {
+        switch (num){
+            case 0 ->{
+                this.shnekRotate1 = shnekRotate;
+            }
+            case 1 ->{
+                this.shnekRotate2 = shnekRotate;
+            }
+            case 2 ->{
+                this.shnekRotate3 = shnekRotate;
+            }
+            case 3 ->{
+                this.shnekRotate4 = shnekRotate;
+            }
+            case 4 ->{
+                this.shnekRotate5 = shnekRotate;
+            }
+        }
+    }
 
     public int getShnekRotate1() {
         return shnekRotate1;

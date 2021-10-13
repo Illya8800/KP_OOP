@@ -9,7 +9,10 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import static CoffeeMachine.ActionList.SelectReceptureButtonAction2.selectReceptureButtonAction3;
+import static CoffeeMachine.ActionList.SelectReceptureButtonAction3.minusButtonAction;
+import static CoffeeMachine.ActionList.SelectReceptureButtonAction3.plusButtonAction;
 import static Form.MainForm.buttonListDrink;
+import static Form.MainForm.buttonListSugar;
 
 public class NextButtonAction1 extends Action{
 
@@ -45,6 +48,12 @@ public class NextButtonAction1 extends Action{
             }
             case 1 -> {
                 MainForm.text.setText(Menu.menu.get(1).toString());
+
+                buttonListSugar.get(0).removeActionListener(minusButtonAction);
+                buttonListSugar.get(1).removeActionListener(plusButtonAction);
+
+                buttonListDrink.get(2).removeActionListener(selectReceptureButtonAction3);
+
                 buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction2);
                 buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction3);
             }

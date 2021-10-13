@@ -24,18 +24,25 @@ public abstract class Beverage implements GetIngridient {
             FileInputStream fileStream = new FileInputStream("receptures.ser");
             ObjectInputStream oi = new ObjectInputStream(fileStream);
 
+
             receptures.clear();
 
             for (int i = 0; i < 7; i++) {
                 Recepture recept = (Recepture) oi.readObject();
                 receptures.add(recept);
-                oi.close();
+
+                System.out.println("Шнек 0 = " + receptures.get(i).getShnekRotate1());
+                System.out.println("Шнек 1 = " + receptures.get(i).getShnekRotate2());
+                System.out.println("Шнек 2 = " + receptures.get(i).getShnekRotate3());
+                System.out.println("Шнек 3 = " + receptures.get(i).getShnekRotate4());
+                System.out.println("Шнек 4 = " + receptures.get(i).getShnekRotate5());
+                System.out.println("=====================================");
+
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+
+            oi.close();
+
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
