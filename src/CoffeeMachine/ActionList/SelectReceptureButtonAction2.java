@@ -11,9 +11,10 @@ import static Form.MainForm.buttonListSugar;
 public class SelectReceptureButtonAction2 extends Action{
 
     private byte idRecepture;
+    private byte currentIdRecepture;
 
     public byte getIdRecepture() {
-        return idRecepture;
+        return currentIdRecepture;
     }
 
     public static SelectReceptureButtonAction3 selectReceptureButtonAction3 = new SelectReceptureButtonAction3();
@@ -24,7 +25,10 @@ public class SelectReceptureButtonAction2 extends Action{
         MainForm.text.setText("Напиток под номером #" + String.valueOf(idRecepture));
         if (idRecepture == 6){
             idRecepture = 0;
+            currentIdRecepture = idRecepture;
+
         } else {
+            currentIdRecepture = idRecepture;
             idRecepture++;
         }
         MainForm.buttonListDrink.get(2).removeActionListener(selectReceptureButtonAction3);

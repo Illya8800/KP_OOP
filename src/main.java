@@ -25,17 +25,28 @@ public class main {
             ArrayList<Recepture> receptures = new ArrayList<>(7);
             Recepture temp = new Recepture();
 
-            temp.setShnekRotate1(100);
-            temp.setShnekRotate2(100);
-            temp.setShnekRotate3(100);
-            temp.setShnekRotate4(100);
-            temp.setShnekRotate5(100);
+            temp.setShnekRotate1(0);
+            temp.setShnekRotate2(0);
+            temp.setShnekRotate3(0);
+            temp.setShnekRotate4(0);
+            temp.setShnekRotate5(0);
 
 
-            for (int i = 0; i < 7; i++) {
-                receptures.add(temp);
-                ou.writeObject(temp);
-            }
+            receptures.add(temp);//Espresso
+            receptures.add(temp);//Doppio
+            ou.writeObject(temp);//Espresso
+            ou.writeObject(temp);//Doppio
+
+
+            temp.setShnekRotate1(750);
+            temp.setShnekRotate2(0);
+            temp.setShnekRotate3(0);
+            temp.setShnekRotate4(0);
+            temp.setShnekRotate5(0);
+            receptures.add(temp);//Doppio
+            ou.writeObject(temp);//Espresso
+
+
 
 
             ou.close();

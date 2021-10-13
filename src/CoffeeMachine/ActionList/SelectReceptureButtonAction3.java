@@ -1,18 +1,14 @@
 package CoffeeMachine.ActionList;
 
-import CoffeeMachine.Drink.Beverage;
 import CoffeeMachine.Recepture.Recepture;
+
 import Form.MainForm;
 
 import java.awt.event.ActionEvent;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 import static CoffeeMachine.ActionList.NextButtonAction1.selectReceptureButtonAction2;
-import static CoffeeMachine.Drink.Beverage.receptures;
 import static Form.MainForm.buttonListSugar;
 
 public class SelectReceptureButtonAction3 extends Action{
@@ -25,82 +21,42 @@ public class SelectReceptureButtonAction3 extends Action{
 
     static byte currentIdShnek;
 
-    private static ArrayList<Recepture> localReceptures = receptures;
+    private static ArrayList<Recepture> localReceptures = new ArrayList<>(7);
 
-    private Recepture recepture;
     @Override
     public void actionPerformed(ActionEvent e) {
 
         System.out.println("SelectReceptureButtonAction3");
-
-        MainForm.text.setText("Шнек " + currentIdShnek + " " + timeRotateShnek + " мс");
-
-        //Beverage.loadRecepture(); //получаем все напитки
-
+        loadRecepture();
 
         buttonListSugar.get(0).removeActionListener(minusButtonAction);
         buttonListSugar.get(1).removeActionListener(plusButtonAction);
         buttonListSugar.get(0).addActionListener(minusButtonAction);
         buttonListSugar.get(1).addActionListener(plusButtonAction);
 
-
-
-
-        /*switch (idShnek){
-            case 0 -> {
-                System.out.println("idShnek = " + idShnek);
-                System.out.println("idRecepture = " + selectReceptureButtonAction2.getIdRecepture());
-            }
-            case 1 -> {
-                System.out.println("idShnek = " + idShnek);
-                System.out.println("idRecepture = " + selectReceptureButtonAction2.getIdRecepture());
-            }
-
-            case 2 -> {
-                System.out.println("idShnek = " + idShnek);
-                System.out.println("idRecepture = " + selectReceptureButtonAction2.getIdRecepture());
-            }
-            case 3 -> {
-                System.out.println("idShnek = " + idShnek);
-                System.out.println("idRecepture = " + selectReceptureButtonAction2.getIdRecepture());
-            }
-            case 4 -> {
-                System.out.println("idShnek = " + idShnek);
-                System.out.println("idRecepture = " + selectReceptureButtonAction2.getIdRecepture());
-            }
-        }
-        */
-
-
-
         currentIdShnek = (byte) idShnek;
 
-        timeRotateShnek = localReceptures.get(currentIdShnek).getShnekRotate(currentIdShnek);
+        timeRotateShnek = localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek);
 
-        MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(currentIdShnek).getShnekRotate(currentIdShnek) + " мс");;
+        MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
+
         if (idShnek == 4) {idShnek = 0;} else {idShnek++;}
 
         //recepture.setShnekRotate1(timeRotateShnek);//ГДЕ СОХРАНЯТЬ?
-
     }
 
-
-
-    private static int plus() {
+    private static void plus() {
         if (timeRotateShnek < 5000){
-            localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).setShnekRotate(currentIdShnek, localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + 100);
             timeRotateShnek += 100;
-
+            localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).setShnekRotate(currentIdShnek, timeRotateShnek);
         }
-        return timeRotateShnek;
     }
 
-    private static int minus() {
+    private static void minus() {
         if(timeRotateShnek > 0){
-            localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).setShnekRotate(currentIdShnek, localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) - 100);
             timeRotateShnek -= 100;
+            localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).setShnekRotate(currentIdShnek, timeRotateShnek);
         }
-        return timeRotateShnek;
     }
 
     static class PlusButtonAction extends Action{
@@ -110,7 +66,7 @@ public class SelectReceptureButtonAction3 extends Action{
             System.out.println("PlusButtonAction");
             plus();
             saveFile();
-            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(currentIdShnek).getShnekRotate(currentIdShnek) + " мс");
+            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
         }
     }
 
@@ -121,7 +77,7 @@ public class SelectReceptureButtonAction3 extends Action{
             System.out.println("MinusButtonAction");
             minus();
             saveFile();
-            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(currentIdShnek).getShnekRotate(currentIdShnek) + " мс");
+            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
         }
     }
 
@@ -145,5 +101,38 @@ public class SelectReceptureButtonAction3 extends Action{
             e.printStackTrace();
         }
     }
+
+
+
+
+
+    public void loadRecepture(){
+        try {
+            FileInputStream fileStream = new FileInputStream("receptures.ser");
+            ObjectInputStream oi = new ObjectInputStream(fileStream);
+
+
+            localReceptures.clear();
+
+            for (int i = 0; i < 7; i++) {
+                Recepture recept = (Recepture) oi.readObject();
+                localReceptures.add(recept);
+
+                System.out.println("Шнек 0 = " + localReceptures.get(i).getShnekRotate1());
+                System.out.println("Шнек 1 = " + localReceptures.get(i).getShnekRotate2());
+                System.out.println("Шнек 2 = " + localReceptures.get(i).getShnekRotate3());
+                System.out.println("Шнек 3 = " + localReceptures.get(i).getShnekRotate4());
+                System.out.println("Шнек 4 = " + localReceptures.get(i).getShnekRotate5());
+                System.out.println("=====================================");
+
+            }
+
+            oi.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

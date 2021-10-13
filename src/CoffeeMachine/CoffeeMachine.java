@@ -1,6 +1,5 @@
 package CoffeeMachine;
 
-import CoffeeMachine.Drink.Beverage;
 import CoffeeMachine.Drink.Decorator.*;
 
 import java.util.ArrayList;

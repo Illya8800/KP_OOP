@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Recepture implements Serializable {
 
-    private int shnekRotate1;
-    private int shnekRotate2;
-    private int shnekRotate3;
-    private int shnekRotate4;
-    private int shnekRotate5;
+    private int shnekRotate1 = 100;
+    private int shnekRotate2 = 100;
+    private int shnekRotate3 = 100;
+    private int shnekRotate4 = 100;
+    private int shnekRotate5 = 100;
 
     public int getShnekRotate(byte num) {
         switch (num){
