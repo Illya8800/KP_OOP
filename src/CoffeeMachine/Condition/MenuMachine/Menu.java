@@ -34,7 +34,7 @@ public class Menu {
         for (javax.swing.JButton jButton : buttonListDrink) {
             jButton.removeActionListener(BT.nullAction);
         }
-
+        buttonListDrink.get(0).removeActionListener(nextButtonAction1);
         buttonListDrink.get(0).addActionListener(nextButtonAction1);
     }
 }

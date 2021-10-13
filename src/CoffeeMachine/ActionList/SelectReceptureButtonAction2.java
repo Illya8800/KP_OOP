@@ -12,9 +12,14 @@ public class SelectReceptureButtonAction2 extends Action{
 
     private byte idRecepture;
     private byte currentIdRecepture;
+    private boolean isCurr = true;
 
     public byte getIdRecepture() {
-        return currentIdRecepture;
+        if(isCurr){
+            return currentIdRecepture;
+        } else {
+        return 6;
+        }
     }
 
     public static SelectReceptureButtonAction3 selectReceptureButtonAction3 = new SelectReceptureButtonAction3();
@@ -24,10 +29,12 @@ public class SelectReceptureButtonAction2 extends Action{
         System.out.println("SelectReceptureButtonAction2");
         MainForm.text.setText("Напиток под номером #" + String.valueOf(idRecepture));
         if (idRecepture == 6){
+            isCurr = false;
             idRecepture = 0;
             currentIdRecepture = idRecepture;
 
         } else {
+            isCurr = true;
             currentIdRecepture = idRecepture;
             idRecepture++;
         }

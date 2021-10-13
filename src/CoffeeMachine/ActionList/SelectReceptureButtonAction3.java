@@ -38,7 +38,7 @@ public class SelectReceptureButtonAction3 extends Action{
 
         timeRotateShnek = localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek);
 
-        MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
+        MainForm.text.setText("Шнек " + currentIdShnek + " : " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
 
         if (idShnek == 4) {idShnek = 0;} else {idShnek++;}
 
@@ -66,7 +66,7 @@ public class SelectReceptureButtonAction3 extends Action{
             System.out.println("PlusButtonAction");
             plus();
             saveFile();
-            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
+            MainForm.text.setText("Шнек " + currentIdShnek + " : " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
         }
     }
 
@@ -77,7 +77,7 @@ public class SelectReceptureButtonAction3 extends Action{
             System.out.println("MinusButtonAction");
             minus();
             saveFile();
-            MainForm.text.setText("Шнек " + currentIdShnek + " " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
+            MainForm.text.setText("Шнек " + currentIdShnek + " : " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
         }
     }
 
