@@ -1,7 +1,6 @@
 package CoffeeMachine.ActionList;
 
 import CoffeeMachine.Recepture.Recepture;
-
 import Form.MainForm;
 
 import java.awt.event.ActionEvent;
@@ -40,9 +39,11 @@ public class SelectReceptureButtonAction3 extends Action{
 
         MainForm.text.setText("Шнек " + currentIdShnek + " : " + localReceptures.get(selectReceptureButtonAction2.getIdRecepture()).getShnekRotate(currentIdShnek) + " мс");
 
-        if (idShnek == 4) {idShnek = 0;} else {idShnek++;}
-
-        //recepture.setShnekRotate1(timeRotateShnek);//ГДЕ СОХРАНЯТЬ?
+        if (idShnek == 4) {
+            idShnek = 0;
+        } else {
+            idShnek++;
+        }
     }
 
     private static void plus() {

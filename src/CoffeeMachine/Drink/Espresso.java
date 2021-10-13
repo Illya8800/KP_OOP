@@ -1,6 +1,5 @@
 package CoffeeMachine.Drink;
 
-
 import java.awt.event.ActionListener;
 
 public abstract class Espresso extends Beverage implements ActionListener {

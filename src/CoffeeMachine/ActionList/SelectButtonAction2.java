@@ -16,7 +16,7 @@ public class SelectButtonAction2 extends Action{
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("SelectButtonAction2");
-        MainForm.text.setText("На шнеке #"+ shnekNumber + " " + String.valueOf(shneks.get(shnekNumber).getCountIngridient()) + " грамм");
+        MainForm.text.setText("На шнеке #"+ shnekNumber + " " + shneks.get(shnekNumber).getCountIngridient() + " грамм");
         shnekNumber++;
         if (shnekNumber == 5) shnekNumber = 0;
     }
