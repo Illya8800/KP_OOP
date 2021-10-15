@@ -8,7 +8,12 @@ public class CappucinoBT extends Espresso {
     @Override
     public void actionPerformed(ActionEvent e) {
         rotate(1000);//добавить кофе до 1500
-        shnekRotate(receptures.get(4));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                shnekRotate(receptures.get(4));
+            }
+        }).start();
         setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Cappuccino.png");
     }
 }

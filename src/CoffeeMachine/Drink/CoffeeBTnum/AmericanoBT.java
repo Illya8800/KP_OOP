@@ -9,7 +9,12 @@ public class AmericanoBT extends Espresso {
     public void actionPerformed(ActionEvent e) {
 
         rotate(1000);//добавить кофе до 1750
-        shnekRotate(receptures.get(2));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                shnekRotate(receptures.get(2));
+            }
+        }).start();
         setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Americano.png");
     }
 }

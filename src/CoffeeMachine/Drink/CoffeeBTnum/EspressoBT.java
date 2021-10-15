@@ -9,7 +9,12 @@ public class EspressoBT extends Espresso {
     @Override
     public void actionPerformed(ActionEvent e) {
         rotate(1000);
-        shnekRotate(receptures.get(0));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                shnekRotate(receptures.get(0));
+            }
+        }).start();
         setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Espresso.png");
     }
 }

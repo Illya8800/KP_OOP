@@ -62,9 +62,6 @@ public class main {
         try {
             FileInputStream fileStream = new FileInputStream("receptures.ser");
             ObjectInputStream oi = new ObjectInputStream(fileStream);
-
-            //receptures.clear();
-
             for (int i = 0; i < 7; i++) {
                 Recepture recept = (Recepture) oi.readObject();
                 receptures.add(recept);

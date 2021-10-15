@@ -8,7 +8,12 @@ public class FlatWhiteBT extends Doppio {
     @Override
     public void actionPerformed(ActionEvent e) {
         rotate(2000);//добавить кофе до 2500 и молоко
-        shnekRotate(receptures.get(3));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                shnekRotate(receptures.get(3));
+            }
+        }).start();
         setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\FlatWhite.png");
 
     }
