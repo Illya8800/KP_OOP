@@ -12,6 +12,7 @@ public abstract class Shnek extends Beverage {
     }
 
     protected abstract int coefficient();
+    protected abstract int coefficient(boolean isLow);
     protected abstract int minCountIngridient();
 
     public byte getIdShnek() {

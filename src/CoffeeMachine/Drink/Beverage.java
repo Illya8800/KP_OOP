@@ -15,6 +15,7 @@ public abstract class Beverage implements GetIngridient {
 
     private CoffeeMachine cm = new CoffeeMachine();
     protected ArrayList<Shnek> shneks = cm.getShneks();
+    protected String [] path = new String[7];
 
     public static ArrayList<Recepture> receptures = new ArrayList<>(7);
 
@@ -22,7 +23,6 @@ public abstract class Beverage implements GetIngridient {
         try {
             FileInputStream fileStream = new FileInputStream("receptures.ser");
             ObjectInputStream oi = new ObjectInputStream(fileStream);
-
 
             receptures.clear();
 
@@ -49,6 +49,7 @@ public abstract class Beverage implements GetIngridient {
 
 
     public void cooking(){
+        setIMGpath();//loadPhoto
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -97,6 +98,16 @@ public abstract class Beverage implements GetIngridient {
         shneks.get(2).rotate(recepture.getShnekRotate3());
         shneks.get(3).rotate(recepture.getShnekRotate4());
         shneks.get(4).rotate(recepture.getShnekRotate5());
+    }
+
+    protected void setIMGpath(){
+        path[0] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Espresso.png";
+        path[1] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Doppio.png";
+        path[2] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Americano.png";
+        path[3] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\FlatWhite.png";
+        path[4] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Cappuccino.png";
+        path[5] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Latte.png";
+        path[6] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Macchiato.png";
     }
 
 }

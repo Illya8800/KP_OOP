@@ -15,6 +15,6 @@ public class AmericanoBT extends Espresso {
                 shnekRotate(receptures.get(2));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Americano.png");
+        setMainPNG(path[2]);
     }
 }

@@ -14,7 +14,7 @@ public class MacchiatoBT extends Doppio {
                 shnekRotate(receptures.get(6));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Macchiato.png");
+        setMainPNG(path[6]);
     }
 
 }

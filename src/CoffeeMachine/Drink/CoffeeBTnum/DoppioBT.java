@@ -14,7 +14,7 @@ public class DoppioBT extends Doppio {
                 shnekRotate(receptures.get(1));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Doppio.png");
+        setMainPNG(path[1]);
 
     }
 }

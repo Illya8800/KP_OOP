@@ -14,7 +14,7 @@ public class LatteBT extends Espresso {
                 shnekRotate(receptures.get(5));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Latte.png");
+        setMainPNG(path[5]);
 
     }
 }

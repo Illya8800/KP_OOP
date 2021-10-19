@@ -14,7 +14,7 @@ public class FlatWhiteBT extends Doppio {
                 shnekRotate(receptures.get(3));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\FlatWhite.png");
+        setMainPNG(path[3]);
 
     }
 }

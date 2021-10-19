@@ -44,7 +44,7 @@ public class MainForm {
 
 
     public void createFrom(){
-        text = new JTextField("Приятного аппетита");
+        text = new JTextField(mainText());
         text.setEditable(false);
         text.setFont(new Font("Times New Roman", Font.BOLD, 25));
         text.setHorizontalAlignment(JTextField.CENTER);
@@ -201,7 +201,38 @@ public class MainForm {
         actionListDrink.add(latteBT);
         buttonListDrink.get(6).addActionListener(macchiatoBT);
         actionListDrink.add(macchiatoBT);
+    }
 
+
+    private String mainText(){
+        String txt = "";
+        switch ((int) (Math.random() * 10)){
+            case 0 -> {
+                txt = "Приятного аппетита!";
+            }
+            case 1 -> {
+                txt = "Закажите любимый напиток!";
+            }
+            case 2 -> {
+                txt = "Попробуйте еспрессо!";
+            }
+            case 3 -> {
+                txt = "Попробуйте доппио!";
+            }case 4 -> {
+                txt = "Попробуйте американо!";
+            }case 5 -> {
+                txt = "Попробуйте флэт вайт!";
+            }case 6 -> {
+                txt = "Попробуйте капучино!";
+            }case 7 -> {
+                txt = "Попробуйте латте!";
+            }case 8 -> {
+                txt = "Попробуйте макиато!";
+            }case 9 -> {
+                txt = "Возьмите любимый напиток!";
+            }
+        }
+        return txt;
     }
 }
 

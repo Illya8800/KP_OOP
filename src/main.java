@@ -56,8 +56,6 @@ public class main {
         }
     }
 
-
-
     public static void readRecepture(){
         try {
             FileInputStream fileStream = new FileInputStream("receptures.ser");

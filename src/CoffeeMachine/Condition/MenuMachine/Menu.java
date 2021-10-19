@@ -28,6 +28,7 @@ public class Menu {
         menu.add(shneks);//Кол-во ингридиентов
     }
 
+
     public void menu(){
         getMenu();
 

@@ -14,6 +14,6 @@ public class CappucinoBT extends Espresso {
                 shnekRotate(receptures.get(4));
             }
         }).start();
-        setMainPNG("C:\\IntelIdeaProject\\KP_OOP\\IMG\\Cappuccino.png");
+        setMainPNG(path[4]);
     }
 }

@@ -20,12 +20,12 @@ public class BT2 extends BT implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainForm.text.setText("Режим программирования");
-        setCurrentAction();
+        dropCurrentAction();
         setNullAction();
         menu.menu();
     }
 
-    public void setCurrentAction(){
+    public void dropCurrentAction(){
         for (javax.swing.JButton jButton : buttonListDrink) {
             jButton.removeActionListener(BT.nullAction);
         }
