@@ -204,9 +204,10 @@ public class MainForm {
     }
 
 
-    private String mainText(){
+    private String mainText(int i){
         String txt = "";
-        switch ((int) (Math.random() * 10)){
+        i = (int) (Math.random() * 10);
+        switch (i){
             case 0 -> {
                 txt = "Приятного аппетита!";
             }
@@ -233,6 +234,10 @@ public class MainForm {
             }
         }
         return txt;
+    }
+
+    private String mainText(){
+        return "Приятного аппетита!";
     }
 }
 

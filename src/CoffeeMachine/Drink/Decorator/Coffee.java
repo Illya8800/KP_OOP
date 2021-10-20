@@ -16,11 +16,6 @@ public class Coffee extends Shnek{
     }
 
     @Override
-    protected int coefficient(boolean isLow) {
-        return (int) (coefficient() * 1.5);
-    }
-
-    @Override
     protected int minCountIngridient() {
         return coefficient() * 10;
     }

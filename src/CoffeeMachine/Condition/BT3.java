@@ -24,6 +24,7 @@ public class BT3 extends BT{
         buttonListDrink.get(0).removeActionListener(nextButtonAction1);
         buttonListDrink.get(1).removeActionListener(selectButtonAction2);
         buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction2);
+
         buttonListDrink.get(2).removeActionListener(selectReceptureButtonAction3);
 
         buttonListSugar.get(0).removeActionListener(minusButtonAction);

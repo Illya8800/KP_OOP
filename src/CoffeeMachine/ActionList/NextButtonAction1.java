@@ -38,7 +38,7 @@ public class NextButtonAction1 extends Action{
                 
                 int shnekId = selectReceptureButtonAction2.getIdRecepture();
                 
-                if (shneks.get(shnekId).getIdShnek() == 7){
+                if (shneks.get(shnekId).getIdShnek() == 5){
                     buttonListDrink.get(1).removeActionListener(selectReceptureButtonAction2);
                     shnekId = 0;
                 } else {

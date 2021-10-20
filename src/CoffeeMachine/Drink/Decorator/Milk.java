@@ -16,11 +16,6 @@ public class Milk extends Shnek {
     }
 
     @Override
-    protected int coefficient(boolean isLow) {
-        return (int) (coefficient() * 2.1);
-    }
-
-    @Override
     protected int minCountIngridient() {
         return coefficient() * 8;
     }

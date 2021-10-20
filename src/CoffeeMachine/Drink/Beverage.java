@@ -36,7 +36,6 @@ public abstract class Beverage implements GetIngridient {
                 System.out.println("Шнек 3 = " + receptures.get(i).getShnekRotate4());
                 System.out.println("Шнек 4 = " + receptures.get(i).getShnekRotate5());
                 System.out.println("=====================================");
-
             }
 
             oi.close();
@@ -108,6 +107,12 @@ public abstract class Beverage implements GetIngridient {
         path[4] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Cappuccino.png";
         path[5] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Latte.png";
         path[6] = "C:\\IntelIdeaProject\\KP_OOP\\IMG\\Macchiato.png";
+    }
+
+    @Override
+    public void rotate(int workTime) {
+        cooking();
+        shneks.get(0).rotate(1500);
     }
 
 }

@@ -16,11 +16,6 @@ public class Sugar extends Shnek {
     }
 
     @Override
-    protected int coefficient(boolean isLow) {
-        return (int) (coefficient() * 1.4);
-    }
-
-    @Override
     protected int minCountIngridient() {
         return coefficient() * 5;
     }

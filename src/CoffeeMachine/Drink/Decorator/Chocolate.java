@@ -16,11 +16,6 @@ public class Chocolate extends Shnek {
     }
 
     @Override
-    protected int coefficient(boolean isLow) {
-        return coefficient() * 2;
-    }
-
-    @Override
     protected int minCountIngridient() {
         return coefficient() * 7;
     }
