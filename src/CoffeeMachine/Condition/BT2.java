@@ -15,7 +15,7 @@ import static CoffeeMachine.Condition.MenuMachine.Menu.nextButtonAction1;
 import static Form.MainForm.buttonListDrink;
 import static Form.MainForm.buttonListSugar;
 
-public class BT2 extends BT implements ActionListener {
+public class BT2 extends BT {
     Menu menu = new Menu();
     @Override
     public void actionPerformed(ActionEvent e) {
